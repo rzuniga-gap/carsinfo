@@ -1,0 +1,44 @@
+<%= form_for(@car) do |f| %>
+  <% if @car.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
+
+      <ul>
+      <% @car.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="field">
+    <%= f.label :brand %><br />
+    <select name="car[brand_id]">
+      <% @brands.each do |brand| %>
+      <option value="<%= brand.id %>"<%= ' selected' if brand.id == @car.brand.id %> >
+        <%= brand.name %>
+      </option>
+      <% end %>
+    </select>
+  </div>
+
+  <div class="field">
+    <%= f.label :model_name %><br />
+    <%= f.text_field :brand_model_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :year %><br />
+    <%= f.text_field :year %>
+  </div>
+
+  <div class="field">
+    <%= f.label :release_date %><br />
+    <%= f.text_field :release_date %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
