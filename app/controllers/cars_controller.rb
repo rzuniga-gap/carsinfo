@@ -37,6 +37,7 @@ class CarsController < ApplicationController
   def edit
     @brands = Brand.all
     @car = Car.find(params[:id])
+    @brand_models = @car.brand.brand_models
   end
 
   # POST /cars
@@ -81,5 +82,11 @@ class CarsController < ApplicationController
       format.html { redirect_to cars_url }
       format.json { head :no_content }
     end
+  end
+
+  def get_models
+    brand = Brand.find(params[:brand])
+    @brand_models = brand.brand_models
+    render :partial => 'brand_models', :locals => { :object => @brand_models }
   end
 end

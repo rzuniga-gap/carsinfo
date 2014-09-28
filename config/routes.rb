@@ -1,8 +1,17 @@
 Carsinfo::Application.routes.draw do
+
+  root :to => 'cars#index'
+
+  resources :brand_models
+
+
   resources :brands
 
 
   resources :cars
+
+  match "cars/:id/get_models" => "cars#get_models"
+  match "cars//get_models" => "cars#get_models"
 
 
   # The priority is based upon order of creation:

@@ -1,0 +1,6 @@
+<%= label_tag :brand_model %><br />
+<% unless @brand_models.blank? %>
+    <%= select_tag("car[brand_model_id]", options_from_collection_for_select(@brand_models, "id", "name")) %>
+<% else %>
+    <%= select_tag "car[brand_model_id]","brand_model_id", :prompt => "-- Select a Model --" %>
+<% end %>

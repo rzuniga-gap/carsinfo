@@ -12,25 +12,27 @@
   <% end %>
 
 
-<div class="field">
-    <%= f.label :brand %><br />
-    <select name="car[brand_id]">
-      <% @brands.each do |brand| %>
-      <option value="<%= brand.id %>"<%= ' selected' if brand.id == @car.brand.id %> >
-        <%= brand.name %>
-      </option>
-      <% end %>
-    </select>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
   </div>
 
   <div class="field">
-    <%= f.label :model_name %><br />
-    <%= f.text_field :brand_model_name %>
+    <%= f.label :brand %><br />
+    <%= select_tag("car[brand_id]", options_from_collection_for_select(@brands, "id", "name", @car.brand_id),  :prompt => "-- Select a Brand --") %>
+    <div id="brand_models_div" class="field">
+     <%= render :partial => 'brand_models', :locals => { :object => @brand_models } %>
+    </div>
   </div>
 
   <div class="field">
     <%= f.label :year %><br />
     <%= f.text_field :year %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
   </div>
 
   <div class="field">

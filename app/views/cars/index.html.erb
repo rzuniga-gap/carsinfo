@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+        <th>Title</th>
     <th>Brand Name</th>
     <th>Model</th>
     <th>Year</th>
@@ -13,8 +14,9 @@
 
 <% @cars.each do |car| %>
   <tr>
+    <th><%= car.title %></th>
     <th><%= car.brand.name %></th>
-    <th><%= car.brand_model_name %></th>
+    <th><%= car.brand_model.name %></th>
     <th><%= car.year %></th>
     <th><%= car.release_date %></th>
     <td><%= link_to 'Show', car %></td>
